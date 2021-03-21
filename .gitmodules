@@ -1,0 +1,3 @@
+[submodule "vendor/sindresorhus/modern-normalize"]
+  path = vendor/sindresorhus/modern-normalize
+  url = git@github.com:sindresorhus/modern-normalize.git
