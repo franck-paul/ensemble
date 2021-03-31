@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
   entry: ['./src/scss/main.scss', './src/js/theme-switcher.js'],
@@ -7,20 +8,19 @@ module.exports = {
   },
   optimization: {
     minimize: true,
+    minimizer: [
+      `...`,
+      new CssMinimizerPlugin(),
+    ],
   },
   module: {
     rules: [
       {
-        // regular css files
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, { loader: 'css-loader', options: { url: false, sourceMap: true } }],
-      },
-      {
-        // sass / scss loader for webpack
-        test: /\.(sass|scss)$/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
           MiniCssExtractPlugin.loader,
           { loader: 'css-loader', options: { url: false, sourceMap: true } },
+          'postcss-loader',
           { loader: 'sass-loader', options: { sourceMap: true } },
         ],
       },
