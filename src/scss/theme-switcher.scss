@@ -1,0 +1,13 @@
+/* Toggle State CSS */
+
+#theme-toggle input:checked ~ span {
+  opacity: 1;
+}
+
+.light #theme-toggle .thumb {
+  left: 0;
+}
+
+.dark #theme-toggle .thumb {
+  left: 2rem;
+}

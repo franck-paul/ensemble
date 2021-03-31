@@ -1,0 +1,34 @@
+/*  Global Colors */
+:root,
+.light {
+  --bg-body: #ffffff;
+  --text-body: #12262f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-body: #12262f;
+    --text-body: #ffffff;
+  }
+}
+
+.dark {
+  --bg-body: #12262f;
+  --text-body: #ffffff;
+}
+
+body {
+  background: var(--bg-body);
+  color: var(--text-body);
+
+  /* Temporary */
+  max-width: 80em;
+  margin: 1em;
+  font-size: 1.25em;
+  line-height: 1.5;
+}
+
+img {
+  /* 2em is for body left + right margin */
+  max-width: calc(100vw - 2em);
+}
