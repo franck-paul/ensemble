@@ -28,6 +28,16 @@ body {
   line-height: 1.5;
 }
 
+a {
+  background: var(--bg-body);
+  color: var(--text-body);
+
+  &:focus, &:active, &:hover {
+    background-color: var(--text-body);
+    color: var(--bg-body);
+  }
+}
+
 img {
   /* 2em is for body left + right margin */
   max-width: min(58em, calc(100vw - 2em));
