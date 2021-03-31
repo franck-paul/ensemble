@@ -1,0 +1,27 @@
+{
+  "name": "ensemble",
+  "version": "1.0.0",
+  "description": "Dotclear 2 theme",
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/franck-paul/ensemble.git"
+  },
+  "keywords": [],
+  "author": "Franck Paul and contributors",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/franck-paul/ensemble/issues"
+  },
+  "homepage": "https://github.com/franck-paul/ensemble#readme",
+  "devDependencies": {
+    "css-loader": "^5.2.0",
+    "mini-css-extract-plugin": "^1.4.0",
+    "sass": "^1.32.8",
+    "sass-loader": "^11.0.1",
+    "webpack": "^5.28.0",
+    "webpack-cli": "^4.6.0"
+  }
+}
