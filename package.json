@@ -10,8 +10,8 @@
     "url": "git+https://github.com/franck-paul/ensemble.git"
   },
   "keywords": [],
-  "author": "Franck Paul",
-  "license": "GPL-v2",
+  "author": "Franck Paul and contributors",
+  "license": "GPL-2.0",
   "bugs": {
     "url": "https://github.com/franck-paul/ensemble/issues"
   },
