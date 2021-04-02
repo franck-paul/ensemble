@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Dotclear 2 theme",
   "scripts": {
-    "build": "parcel build ./src/scss/main.css"
+    "build": "parcel build ./src/scss/main.scss"
   },
   "repository": {
     "type": "git",
