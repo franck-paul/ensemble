@@ -40,7 +40,7 @@ a {
 
 img {
   /* 2em is for body left + right margin */
-  max-width: min(58em, calc(100vw - 2em));
+  max-width: #{"min(58em, calc(100vw - 2em))"};
   height: auto;
   box-shadow: 0 0 3px 1px var(--text-body);
   border-radius: 1em;
