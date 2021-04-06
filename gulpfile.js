@@ -8,6 +8,8 @@ const plg_cleanCSS = require('gulp-clean-css');
 const plg_sourcemaps = require('gulp-sourcemaps');
 const plg_uglify = require('gulp-uglify');
 
+const mode = require('gulp-mode')();
+
 const del = require('del');
 
 // Assets
@@ -27,10 +29,10 @@ var paths = {
 const sass = function (done) {
   gulp
     .src(assets.sass)
-    .pipe(plg_sourcemaps.init())
+    .pipe(mode.development(plg_sourcemaps.init()))
     .pipe(plg_sass()) // Converts Sass to CSS with gulp-sass
-    .pipe(plg_cleanCSS())
-    .pipe(plg_sourcemaps.write('.'))
+    .pipe(mode.production(plg_cleanCSS()))
+    .pipe(mode.development(plg_sourcemaps.write('.')))
     .pipe(gulp.dest(paths.dist));
   done();
 };
@@ -40,9 +42,9 @@ exports.do_sass = series(sass);
 const css = function (done) {
   gulp
     .src(assets.css)
-    .pipe(plg_sourcemaps.init())
-    .pipe(plg_cleanCSS())
-    .pipe(plg_sourcemaps.write('.'))
+    .pipe(mode.development(plg_sourcemaps.init()))
+    .pipe(mode.production(plg_cleanCSS()))
+    .pipe(mode.development(plg_sourcemaps.write('.')))
     .pipe(gulp.dest(paths.dist));
   done();
 };
@@ -52,9 +54,9 @@ exports.do_css = series(css);
 const js = function (done) {
   gulp
     .src(assets.js)
-    .pipe(plg_sourcemaps.init())
-    .pipe(plg_uglify()) // Minify JS files
-    .pipe(plg_sourcemaps.write('.'))
+    .pipe(mode.development(plg_sourcemaps.init()))
+    .pipe(mode.production(plg_uglify())) // Minify JS files
+    .pipe(mode.development(plg_sourcemaps.write('.')))
     .pipe(gulp.dest(paths.dist));
   done();
 };
