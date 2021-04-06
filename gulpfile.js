@@ -11,9 +11,13 @@ const plg_uglify = require('gulp-uglify');
 const mode = require('gulp-mode')();
 
 const del = require('del');
+const zip = require('gulp-zip');
+const rename = require("gulp-rename");
+
+const pjson = require('./package.json');
 
 // Assets
-var assets = {
+const assets = {
   css: 'src/css/*.css',
   sass: 'src/scss/main.scss',
   js: 'src/js/*.js',
@@ -21,9 +25,13 @@ var assets = {
 };
 
 // Paths
-var paths = {
+const paths = {
   dist: 'dist',
+  pack: 'package'
 };
+
+// Package elements
+const elements = ['*.php', 'LICENSE', 'README.md', 'tpl/*', 'dist/*', '!dist/*.map'];
 
 // Sass
 const sass = function (done) {
@@ -66,14 +74,14 @@ exports.do_js = series(js);
 const fonts = function (done) {
   gulp
     .src(assets.font)
-    .pipe(gulp.dest('dist/fonts'));
+    .pipe(gulp.dest(paths.dist + '/fonts'));
   done();
 };
 exports.do_fonts = series(fonts);
 
 // Cleanup
 const clean = function (done) {
-  del(paths.dist);
+  del('./' + paths.dist);
   done();
 };
 exports.clean = series(clean);
@@ -87,3 +95,15 @@ exports.watch = function () {
   watch(assets.css, css);
   watch(assets.js, js);
 };
+
+// Package build
+const pack = function (done) {
+  gulp
+    .src(elements, { base: '.' })
+    .pipe(gulp.dest(pjson.module + '-' + pjson.name + '-' + pjson.version + '/' + pjson.name))
+    .pipe(zip(pjson.module + '-' + pjson.name + '-' + pjson.version + '.zip'))
+    .pipe(gulp.dest(paths.pack));
+  del('./' + pjson.module + '-' + pjson.name + '-' + pjson.version);
+  done();
+};
+exports.pack = series(pack);
