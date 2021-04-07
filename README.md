@@ -4,7 +4,7 @@ Dotclear 2 theme
 
 ## Installation
 
-Using Dotclear 2 common module installation procedures (DotAddict or manual installation).
+Using Dotclear 2 theme/plugin installation procedures (via DotAddict or manual installation).
 
 For development (in order to build assets):
 
@@ -15,14 +15,13 @@ npm i
 ## Build
 
 ```
-gulp build [--production]
+npm run build
 ```
 
 ## Make Dotclear package
 
 ```
-gulp build --production
-gulp pack
+npm run pack
 ```
 
 Package building will use some properties from `package.json`:

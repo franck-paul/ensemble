@@ -15,7 +15,11 @@
     "gulp-uglify": "^3.0.2",
     "gulp-zip": "^5.1.0"
   },
-  "scripts": {},
+  "scripts": {
+    "clean": "gulp clean",
+    "build": "gulp build",
+    "pack": "export NODE_ENV=production && gulp clean && gulp build && gulp pack"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/franck-paul/ensemble.git"
