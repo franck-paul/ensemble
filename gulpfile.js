@@ -95,6 +95,7 @@ exports.watch = function () {
   watch(assets.sass, sass);
   watch(assets.css, css);
   watch(assets.js, js);
+  watch(assets.font, fonts);
 };
 
 // Package build
