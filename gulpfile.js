@@ -8,11 +8,12 @@ const plg_cleanCSS = require('gulp-clean-css');
 const plg_sourcemaps = require('gulp-sourcemaps');
 const plg_uglify = require('gulp-uglify');
 
+plg_sass.compiler = require('dart-sass');
+
 const mode = require('gulp-mode')();
 
 const del = require('del');
 const zip = require('gulp-zip');
-const rename = require("gulp-rename");
 
 const pjson = require('./package.json');
 
