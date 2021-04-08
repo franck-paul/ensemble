@@ -35,55 +35,50 @@ const paths = {
 const elements = ['*.php', 'LICENSE', 'README.md', 'tpl/*', 'dist/*', '!dist/*.map', 'locales/**/*'];
 
 // Sass
-function sass (done) {
-  gulp
+function sass () {
+  return gulp
     .src(assets.sass)
     .pipe(mode.development(plg_sourcemaps.init()))
     .pipe(plg_sass()) // Converts Sass to CSS with gulp-sass
     .pipe(mode.production(plg_cleanCSS()))
     .pipe(mode.development(plg_sourcemaps.write('.')))
     .pipe(gulp.dest(paths.dist));
-  done();
 }
 exports.do_sass = series(sass);
 
 // CSS
-function css (done) {
-  gulp
+function css () {
+  return gulp
     .src(assets.css)
     .pipe(mode.development(plg_sourcemaps.init()))
     .pipe(mode.production(plg_cleanCSS()))
     .pipe(mode.development(plg_sourcemaps.write('.')))
     .pipe(gulp.dest(paths.dist));
-  done();
 }
 exports.do_css = series(css);
 
 // Js
-function js (done) {
-  gulp
+function js () {
+  return gulp
     .src(assets.js)
     .pipe(mode.development(plg_sourcemaps.init()))
     .pipe(mode.production(plg_uglify())) // Minify JS files
     .pipe(mode.development(plg_sourcemaps.write('.')))
     .pipe(gulp.dest(paths.dist));
-  done();
 }
 exports.do_js = series(js);
 
 // Fonts
-function fonts (done) {
-  gulp
+function fonts () {
+  return gulp
     .src(assets.font)
     .pipe(gulp.dest(paths.dist + '/fonts'));
-  done();
 }
 exports.do_fonts = series(fonts);
 
 // Cleanup
-function clean (done) {
-  del('./' + paths.dist);
-  done();
+function clean () {
+  return del('./' + paths.dist);
 }
 exports.clean = series(clean);
 
@@ -99,26 +94,23 @@ exports.watch = function () {
 };
 
 // Package build
-function prepare_pack (done) {
-  gulp
+function prepare_pack () {
+  return gulp
     .src(elements, { base: '.' })
     .pipe(gulp.dest(pjson.module + '-' + pjson.name + '-' + pjson.version + '/' + pjson.name));
-  done();
 }
 exports.prepare_pack = series(prepare_pack);
 
-function zip_pack (done) {
-  gulp
+function zip_pack () {
+  return gulp
     .src(pjson.module + '-' + pjson.name + '-' + pjson.version + '/**/*')
     .pipe(zip(pjson.module + '-' + pjson.name + '-' + pjson.version + '.zip'))
     .pipe(gulp.dest(paths.pack));
-  done();
 }
 exports.zip_pack = series(zip_pack);
 
-function clean_pack (done) {
-  del('./' + pjson.module + '-' + pjson.name + '-' + pjson.version);
-  done();
+function clean_pack () {
+  return del('./' + pjson.module + '-' + pjson.name + '-' + pjson.version);
 }
 exports.clean_pack = series(clean_pack);
 
