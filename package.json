@@ -18,7 +18,8 @@
   "scripts": {
     "clean": "gulp clean",
     "build": "gulp build",
-    "pack": "export NODE_ENV=production && gulp clean && gulp build && gulp pack"
+    "pack": "export NODE_ENV=production && gulp clean build pack",
+    "reset": "gulp reset"
   },
   "repository": {
     "type": "git",

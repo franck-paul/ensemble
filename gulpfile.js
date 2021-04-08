@@ -28,14 +28,14 @@ const assets = {
 // Paths
 const paths = {
   dist: 'dist',
-  pack: 'package'
+  pack: 'package',
 };
 
 // Package elements
 const elements = ['*.php', 'LICENSE', 'README.md', 'tpl/*', 'dist/*', '!dist/*.map', 'locales/**/*'];
 
 // Sass
-function sass () {
+function sass() {
   return gulp
     .src(assets.sass)
     .pipe(mode.development(plg_sourcemaps.init()))
@@ -47,7 +47,7 @@ function sass () {
 exports.do_sass = series(sass);
 
 // CSS
-function css () {
+function css() {
   return gulp
     .src(assets.css)
     .pipe(mode.development(plg_sourcemaps.init()))
@@ -58,7 +58,7 @@ function css () {
 exports.do_css = series(css);
 
 // Js
-function js () {
+function js() {
   return gulp
     .src(assets.js)
     .pipe(mode.development(plg_sourcemaps.init()))
@@ -69,15 +69,13 @@ function js () {
 exports.do_js = series(js);
 
 // Fonts
-function fonts () {
-  return gulp
-    .src(assets.font)
-    .pipe(gulp.dest(paths.dist + '/fonts'));
+function fonts() {
+  return gulp.src(assets.font).pipe(gulp.dest(paths.dist + '/fonts'));
 }
 exports.do_fonts = series(fonts);
 
 // Cleanup
-function clean () {
+function clean() {
   return del('./' + paths.dist);
 }
 exports.clean = series(clean);
@@ -94,14 +92,14 @@ exports.watch = function () {
 };
 
 // Package build
-function prepare_pack () {
+function prepare_pack() {
   return gulp
     .src(elements, { base: '.' })
     .pipe(gulp.dest(pjson.module + '-' + pjson.name + '-' + pjson.version + '/' + pjson.name));
 }
 exports.prepare_pack = series(prepare_pack);
 
-function zip_pack () {
+function zip_pack() {
   return gulp
     .src(pjson.module + '-' + pjson.name + '-' + pjson.version + '/**/*')
     .pipe(zip(pjson.module + '-' + pjson.name + '-' + pjson.version + '.zip'))
@@ -109,9 +107,14 @@ function zip_pack () {
 }
 exports.zip_pack = series(zip_pack);
 
-function clean_pack () {
+function clean_pack() {
   return del('./' + pjson.module + '-' + pjson.name + '-' + pjson.version);
 }
 exports.clean_pack = series(clean_pack);
 
 exports.pack = series(prepare_pack, zip_pack, clean_pack);
+
+// Reset: keep only non generated files
+exports.reset = function () {
+  return del(['./' + paths.dist, './' + paths.pack]);
+};
