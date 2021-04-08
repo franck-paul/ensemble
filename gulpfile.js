@@ -20,7 +20,7 @@ const pjson = require('./package.json');
 // Assets
 const assets = {
   css: 'src/css/*.css',
-  sass: 'src/scss/main.scss',
+  sass: 'src/s{a,c}ss/main.scss',
   js: 'src/js/*.js',
   font: ['src/css/fonts/**.*', 'src/scss/fonts/**.*'],
 };
@@ -84,12 +84,16 @@ exports.clean = series(clean);
 exports.build = series(clean, parallel(css, sass, js, fonts));
 
 // Watch
-exports.watch = function () {
+function do_watch () {
   watch(assets.sass, sass);
   watch(assets.css, css);
   watch(assets.js, js);
   watch(assets.font, fonts);
-};
+}
+exports.watch = series(do_watch);
+
+// Default = Build + wtahc
+exports.default = series(clean, parallel(css, sass, js, fonts), do_watch);
 
 // Package build
 function prepare_pack() {

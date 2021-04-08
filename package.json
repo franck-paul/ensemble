@@ -19,7 +19,8 @@
     "clean": "gulp clean",
     "build": "gulp build",
     "pack": "export NODE_ENV=production && gulp clean build pack",
-    "reset": "gulp reset"
+    "reset": "gulp reset",
+    "default": "gulp"
   },
   "repository": {
     "type": "git",
