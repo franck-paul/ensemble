@@ -32,7 +32,7 @@ const paths = {
 };
 
 // Package elements
-const elements = ['*.php', 'LICENSE', 'README.md', 'tpl/*', 'dist/*', '!dist/*.map', 'locales/**/*'];
+const elements = ['*.php', '*.jpg', 'LICENSE', 'README.md', 'tpl/*', 'dist/*', '!dist/*.map', 'locales/**/*'];
 
 // Sass
 function sass() {
