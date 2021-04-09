@@ -33,10 +33,45 @@ body {
   top: 0;
   background: var(--bg-body);
   border-bottom: 1px solid var(--text-body);
+
+  // animation magic
+  transition: all 0.4s ease-in-out;
+  overflow-x: hidden;
 }
 
 .header, footer {
-  margin: 1em;
+  padding: 1em;
+}
+
+.header.shrink {
+  background: var(--text-body);
+  color: var(--bg-body);
+
+  .site-baseline {
+    display: none;
+  }
+
+  nav {
+    display: none;
+  }
+
+  h1 {
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  a {
+    background: var(--text-body);
+    color: var(--bg-body);
+
+    &:focus,
+    &:active,
+    &:hover {
+      background-color: var(--bg-body);
+      color: var(--text-body);
+    }
+  }
 }
 
 #wrapper {
