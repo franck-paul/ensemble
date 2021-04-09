@@ -17,13 +17,16 @@ const zip = require('gulp-zip');
 
 const pjson = require('./package.json');
 
-// Assets
+// Assets (used for build)
 const assets = {
   css: 'src/css/*.css',
-  sass: 'src/scss/main.scss',
+  sass: 'src/scss/main.scss', // Should only include main Sass file
   js: 'src/js/*.js',
   font: ['src/css/fonts/**.*', 'src/scss/fonts/**.*'],
 };
+
+// Watches (used for watch)
+const watches = Object.assign({}, assets, { sass: 'src/scss/*.scss' });
 
 // Paths
 const paths = {
@@ -84,16 +87,22 @@ exports.clean = series(clean);
 exports.build = series(clean, parallel(css, sass, js, fonts));
 
 // Watch
-function do_watch () {
-  watch(assets.sass, sass);
-  watch(assets.css, css);
-  watch(assets.js, js);
-  watch(assets.font, fonts);
+function watch_sass() {
+  return watch(watches.sass, sass);
 }
-exports.watch = series(do_watch);
+function watch_css() {
+  return watch(watches.css, css);
+}
+function watch_js() {
+  return watch(watches.js, js);
+}
+function watch_font() {
+  return watch(watches.font, fonts);
+}
+exports.watch = parallel(watch_sass, watch_css, watch_js, watch_font);
 
 // Default = Build + watch
-exports.default = series(clean, parallel(css, sass, js, fonts), do_watch);
+exports.default = series(clean, parallel(css, sass, js, fonts), parallel(watch_sass, watch_css, watch_js, watch_font));
 
 // Package build
 function prepare_pack() {
