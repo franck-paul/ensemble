@@ -23,24 +23,41 @@ body {
 
   /* Temporary */
   max-width: 60em;
-  margin: 1em;
   font-size: 1.25em;
   line-height: 1.5;
+}
+
+// Temporary
+.header {
+  position: sticky;
+  top: 0;
+  background: var(--bg-body);
+  border-bottom: 1px solid var(--text-body);
+}
+
+.header, footer {
+  margin: 1em;
+}
+
+#wrapper {
+  padding: clamp(1rem, 10vw, 10rem);
+  margin: clamp(1.5rem, 10vw, 7.5rem) 0;
 }
 
 a {
   background: var(--bg-body);
   color: var(--text-body);
 
-  &:focus, &:active, &:hover {
+  &:focus,
+  &:active,
+  &:hover {
     background-color: var(--text-body);
     color: var(--bg-body);
   }
 }
 
 img {
-  /* 2em is for body left + right margin */
-  max-width: min(58em, calc(100vw - 2em));
+  max-width: 100%;
   height: auto;
   box-shadow: 0 0 3px 1px var(--text-body);
   border-radius: 1em;
@@ -51,6 +68,10 @@ img {
     float: left;
     margin-right: 1em;
   }
+}
+
+pre {
+  white-space: pre-wrap;
 }
 
 /* Micro clearfix thx to Nicolas Gallagher, replaced by display: flow-root (see https://css-tricks.com/display-flow-root/) */
