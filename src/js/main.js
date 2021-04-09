@@ -5,13 +5,14 @@ function sleep(time) {
 }
 
 window.addEventListener('scroll', function () {
-  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+  let header = document.querySelector('.header');
+  if (window.pageYOffset > 80) {
     sleep(200).then(() => {
-      document.querySelector('.header').classList.add('shrink');
+      header.classList.add('shrink');
     });
   } else {
     sleep(200).then(() => {
-      document.querySelector('.header').classList.remove('shrink');
+      header.classList.remove('shrink');
     });
   }
 });
