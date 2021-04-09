@@ -92,7 +92,7 @@ function do_watch () {
 }
 exports.watch = series(do_watch);
 
-// Default = Build + wtahc
+// Default = Build + watch
 exports.default = series(clean, parallel(css, sass, js, fonts), do_watch);
 
 // Package build
