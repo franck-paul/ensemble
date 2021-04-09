@@ -1,25 +1,26 @@
 /*  Global Colors */
 :root,
 .light {
-  --bg-body: #ffffff;
+  --bg-body: #fff;
   --text-body: #12262f;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-body: #12262f;
-    --text-body: #ffffff;
+    --text-body: #fff;
   }
 }
 
 .dark {
   --bg-body: #12262f;
-  --text-body: #ffffff;
+  --text-body: #fff;
 }
 
 body {
   background: var(--bg-body);
   color: var(--text-body);
+  overflow-x: hidden;
 
   /* Temporary */
   max-width: 60em;
@@ -28,6 +29,18 @@ body {
 }
 
 // Temporary
+a {
+  background: var(--bg-body);
+  color: var(--text-body);
+
+  &:focus,
+  &:active,
+  &:hover {
+    background-color: var(--text-body);
+    color: var(--bg-body);
+  }
+}
+
 .header {
   position: sticky;
   top: 0;
@@ -39,7 +52,8 @@ body {
   overflow-x: hidden;
 }
 
-.header, footer {
+.header,
+footer {
   padding: 1em;
 }
 
@@ -79,18 +93,6 @@ body {
   margin: clamp(1.5rem, 10vw, 7.5rem) 0;
 }
 
-a {
-  background: var(--bg-body);
-  color: var(--text-body);
-
-  &:focus,
-  &:active,
-  &:hover {
-    background-color: var(--text-body);
-    color: var(--bg-body);
-  }
-}
-
 img {
   max-width: 100%;
   height: auto;
@@ -107,6 +109,19 @@ img {
 
 pre {
   white-space: pre-wrap;
+}
+
+// Full-width image
+img.full-width {
+  width: 100vw;
+  max-width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  box-shadow: none;
+  border: 1px solid var(--text-body);
 }
 
 /* Micro clearfix thx to Nicolas Gallagher, replaced by display: flow-root (see https://css-tricks.com/display-flow-root/) */
