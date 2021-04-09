@@ -20,7 +20,7 @@ const pjson = require('./package.json');
 // Assets
 const assets = {
   css: 'src/css/*.css',
-  sass: 'src/s{a,c}ss/main.scss',
+  sass: 'src/scss/main.scss',
   js: 'src/js/*.js',
   font: ['src/css/fonts/**.*', 'src/scss/fonts/**.*'],
 };
