@@ -7,6 +7,7 @@ const plg_sass = require('gulp-sass');
 const plg_cleanCSS = require('gulp-clean-css');
 const plg_sourcemaps = require('gulp-sourcemaps');
 const plg_uglify = require('gulp-uglify');
+const plg_concat = require('gulp-concat');
 
 plg_sass.compiler = require('dart-sass');
 
@@ -65,6 +66,7 @@ function js() {
   return gulp
     .src(assets.js)
     .pipe(mode.development(plg_sourcemaps.init()))
+    .pipe(plg_concat('main.js'))
     .pipe(mode.production(plg_uglify())) // Minify JS files
     .pipe(mode.development(plg_sourcemaps.write('.')))
     .pipe(gulp.dest(paths.dist));
