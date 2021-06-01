@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
-/* Normalize CSS */
-@import '../../vendor/sindresorhus/modern-normalize/modern-normalize';
+/* Reset CSS */
+@import '../../vendor/andy-piccalilli/modern-css-reset/dist/reset';
 
 /* Main styles */
 @import 'a11y';

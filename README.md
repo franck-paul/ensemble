@@ -29,3 +29,7 @@ Package building will use some properties from `package.json`:
 * name: will be used as folder name
 * module: must be 'theme' or 'plugin'
 * version: will be used in archive name
+
+Notes:
+
+* Use node v14
