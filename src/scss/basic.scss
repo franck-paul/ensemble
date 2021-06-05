@@ -3,32 +3,31 @@
 .light {
   --bg-body: #fff;
   --text-body: #12262f;
+  --bg-soft-body: #dddfe0;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-body: #12262f;
     --text-body: #fff;
+    --bg-soft-body: #2a353b;
   }
 }
 
 .dark {
   --bg-body: #12262f;
   --text-body: #fff;
+    --bg-soft-body: #2a353b;
 }
 
 body {
   background: var(--bg-body);
   color: var(--text-body);
   overflow-x: hidden;
-
-  /* Temporary */
-  max-width: 60em;
   font-size: 1.25em;
   line-height: 1.5;
 }
 
-// Temporary
 a {
   background: var(--bg-body);
   color: var(--text-body);
@@ -46,15 +45,11 @@ a {
   top: 0;
   background: var(--bg-body);
   border-bottom: 1px solid var(--text-body);
+  padding: 1em;
 
   // animation magic
   transition: all 0.4s ease-in-out;
   overflow-x: hidden;
-}
-
-.header,
-footer {
-  padding: 1em;
 }
 
 .header.shrink {
@@ -89,8 +84,18 @@ footer {
 }
 
 #wrapper {
-  padding: clamp(1rem, 10vw, 10rem);
-  margin: clamp(1.5rem, 10vw, 7.5rem) 0;
+  padding: clamp(1rem, 10vw, 5rem);
+  max-width: 60em;
+}
+
+footer {
+  padding: 1em;
+  background: var(--bg-soft-body);
+  color: var(--text-body);
+
+  a {
+    background: var(--bg-soft-body);
+  }
 }
 
 img {
