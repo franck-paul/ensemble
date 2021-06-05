@@ -1,34 +1,34 @@
 'use strict';
 
-let breakpoint = null;
-let timerId = null;
+let ensemble = {
+  breakpoint: null,
+  timerId: null,
 
-let debounceFunction = function (func, delay) {
-  // Cancels the setTimeout method execution
-  if (timerId) {
-    clearTimeout(timerId);
-  }
-  // Executes the func after delay time.
-  timerId = setTimeout(func, delay);
-};
-
-let doShrinkHeader = function() {
-  let header = document.querySelector('.header');
-  if (breakpoint > 0) {
-    if (window.pageYOffset >= breakpoint) {
-      header.classList.add('shrink');
-      breakpoint = header.offsetHeight;
-    } else if (window.pageYOffset < breakpoint) {
-      header.classList.remove('shrink');
-      breakpoint = header.offsetHeight;
+  debounceFunction: function (func, delay) {
+    if (ensemble.timerId) {
+      clearTimeout(ensemble.timerId);
     }
-  }
+    ensemble.timerId = setTimeout(func, delay);
+  },
+
+  doShrinkHeader: function () {
+    let header = document.querySelector('.header');
+    if (ensemble.breakpoint > 0) {
+      if (window.pageYOffset >= ensemble.breakpoint) {
+        header.classList.add('shrink');
+        ensemble.breakpoint = header.offsetHeight;
+      } else if (window.pageYOffset < ensemble.breakpoint) {
+        header.classList.remove('shrink');
+        ensemble.breakpoint = header.offsetHeight;
+      }
+    }
+  },
 };
 
 document.addEventListener('DOMContentLoaded', function () {
-  breakpoint = document.querySelector('.header').offsetHeight;
+  ensemble.breakpoint = document.querySelector('.header').offsetHeight;
 });
 
 window.addEventListener('scroll', function () {
-  debounceFunction(doShrinkHeader, 200);
+  ensemble.debounceFunction(ensemble.doShrinkHeader, 200);
 });
