@@ -42,6 +42,7 @@ a {
 
 .header {
   position: sticky;
+  z-index: 1; // Mandatory to avoid relative positionned blockd to scroll over stick header
   top: 0;
   background: var(--bg-body);
   border-bottom: 1px solid var(--text-body);
