@@ -1,0 +1,254 @@
+:root {
+  --markup-font-size: .75em;
+  --markup-opacity: .25;
+}
+
+@mixin markup_tag($tag) {
+  &::before, &::after {
+    font-size: var(--markup-font-size);
+    opacity: var(--markup-opacity);
+  }
+
+  &::before {
+    content: '<#{$tag}>';
+  }
+
+  &::after {
+    content: '</#{$tag}>';
+  }
+}
+
+//body {
+body.markup {
+  div {
+    @include markup_tag(div);
+  }
+
+  h1 {
+    @include markup_tag(h1);
+  }
+
+  h2 {
+    @include markup_tag(h2);
+  }
+
+  h3 {
+    @include markup_tag(h3);
+  }
+
+  h4 {
+    @include markup_tag(h4);
+  }
+
+  h5 {
+    @include markup_tag(h5);
+  }
+
+  h6 {
+    @include markup_tag(h6);
+  }
+
+  ul {
+    @include markup_tag(ul);
+  }
+
+  ol {
+    @include markup_tag(ol);
+  }
+
+  li {
+    @include markup_tag(li);
+  }
+
+  p {
+    @include markup_tag(p);
+  }
+
+  a {
+    @include markup_tag(a);
+  }
+
+  blockquote {
+    @include markup_tag(blockquote);
+  }
+
+  img {
+    @include markup_tag(img);
+  }
+
+  strong {
+    @include markup_tag(strong);
+  }
+
+  em {
+    @include markup_tag(em);
+  }
+
+  hr {
+    @include markup_tag(hr);
+  }
+
+  abbr {
+    @include markup_tag(abbr);
+  }
+
+  acronym {
+    @include markup_tag(acronym);
+  }
+
+  cite {
+    @include markup_tag(cite);
+  }
+
+  code {
+    @include markup_tag(code);
+  }
+
+  data {
+    @include markup_tag(data);
+  }
+
+  del {
+    @include markup_tag(del);
+  }
+
+  ins {
+    @include markup_tag(ins);
+  }
+
+  dfn {
+    @include markup_tag(dfn);
+  }
+
+  kbd {
+    @include markup_tag(kbd);
+  }
+
+  mark {
+    @include markup_tag(mark);
+  }
+
+  q {
+    @include markup_tag(q);
+  }
+
+  s {
+    @include markup_tag(s);
+  }
+
+  samp {
+    @include markup_tag(samp);
+  }
+
+  small {
+    @include markup_tag(small);
+  }
+
+  span {
+    @include markup_tag(span);
+  }
+
+  sub {
+    @include markup_tag(sub);
+  }
+
+  sup {
+    @include markup_tag(sup);
+  }
+
+  time {
+    @include markup_tag(time);
+  }
+
+  u {
+    @include markup_tag(u);
+  }
+
+  var {
+    @include markup_tag(var);
+  }
+
+  pre {
+    @include markup_tag(pre);
+  }
+
+  dl {
+    @include markup_tag(dl);
+  }
+
+  dt {
+    @include markup_tag(dt);
+  }
+
+  dd {
+    @include markup_tag(dd);
+  }
+
+  table {
+    @include markup_tag(table);
+  }
+
+  thead {
+    @include markup_tag(thead);
+  }
+
+  tbody {
+    @include markup_tag(tbody);
+  }
+
+  tr {
+    @include markup_tag(tr);
+  }
+
+  th {
+    @include markup_tag(th);
+  }
+
+  td {
+    @include markup_tag(td);
+  }
+
+  form {
+    @include markup_tag(form);
+  }
+
+  article {
+    @include markup_tag(article);
+  }
+
+  section {
+    @include markup_tag(section);
+  }
+
+  header {
+    @include markup_tag(header);
+  }
+
+  footer {
+    @include markup_tag(footer);
+  }
+
+  input {
+    @include markup_tag(input);
+  }
+
+  label {
+    @include markup_tag(label);
+  }
+
+  button {
+    @include markup_tag(button);
+  }
+
+  textarea {
+    @include markup_tag(textarea);
+  }
+
+  nav {
+    @include markup_tag(nav);
+  }
+
+  aside {
+    @include markup_tag(aside);
+  }
+}
