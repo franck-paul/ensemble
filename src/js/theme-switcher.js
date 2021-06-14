@@ -1,3 +1,4 @@
+/*global ensemble */
 'use strict';
 
 /* From Colin Fahrion (https://codepen.io/colinaut/pen/dyNpdOV) */
@@ -16,11 +17,29 @@
 </div>
 */
 
-document.addEventListener('DOMContentLoaded', function () {
-  darkmode();
-});
+ensemble.darkmode = function () {
+  /*!
+   * Get the first matching element in the DOM
+   * (c) 2019 Chris Ferdinandi, MIT License, https://gomakethings.com
+   * @param  {String} selector The element selector
+   * @param  {Node}   parent   The parent to search in [optional]
+   * @return {Node}            The element
+   */
+  let pick_elt = function (selector, parent) {
+    return (parent ? parent : document).querySelector(selector);
+  };
 
-function darkmode() {
+  /*!
+   * Get an array of all matching elements in the DOM
+   * (c) 2019 Chris Ferdinandi, MIT License, https://gomakethings.com
+   * @param  {String} selector The element selector
+   * @param  {Node}   parent   The parent to search in [optional]
+   * @return {Array}           Th elements
+   */
+  let pick_elts = function (selector, parent) {
+    return Array.prototype.slice.call((parent ? parent : document).querySelectorAll(selector));
+  };
+
   // Grab state from localStorage
   const storedMode = window.localStorage.getItem('darkmode');
 
@@ -41,26 +60,8 @@ function darkmode() {
       if (t.checked) setState(t.getAttribute('value'));
     });
   });
-}
-
-/*!
- * Get the first matching element in the DOM
- * (c) 2019 Chris Ferdinandi, MIT License, https://gomakethings.com
- * @param  {String} selector The element selector
- * @param  {Node}   parent   The parent to search in [optional]
- * @return {Node}            The element
- */
-var pick_elt = function (selector, parent) {
-  return (parent ? parent : document).querySelector(selector);
 };
 
-/*!
- * Get an array of all matching elements in the DOM
- * (c) 2019 Chris Ferdinandi, MIT License, https://gomakethings.com
- * @param  {String} selector The element selector
- * @param  {Node}   parent   The parent to search in [optional]
- * @return {Array}           Th elements
- */
-var pick_elts = function (selector, parent) {
-  return Array.prototype.slice.call((parent ? parent : document).querySelectorAll(selector));
-};
+document.addEventListener('DOMContentLoaded', function () {
+  ensemble.darkmode();
+});
