@@ -1,4 +1,4 @@
-/*global ensemble */
+/*global dotclear_ensemble */
 'use strict';
 
 /* From Colin Fahrion (https://codepen.io/colinaut/pen/dyNpdOV) */
@@ -17,7 +17,7 @@
 </div>
 */
 
-ensemble.darkmode = function () {
+dotclear_ensemble.darkmode = function () {
   /*!
    * Get the first matching element in the DOM
    * (c) 2019 Chris Ferdinandi, MIT License, https://gomakethings.com
@@ -63,5 +63,5 @@ ensemble.darkmode = function () {
 };
 
 document.addEventListener('DOMContentLoaded', function () {
-  ensemble.darkmode();
+  dotclear_ensemble.darkmode();
 });
