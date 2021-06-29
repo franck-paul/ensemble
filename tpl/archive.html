@@ -1,17 +1,6 @@
 {{tpl:extends parent="__parent__"}}
-<tpl:Block name="wrapper-sidebar">
-	<aside class="sidebar" id="sidebar" role="complementary">
-		<div class="widgets blognav__widgets" id="blognav">
-			<tpl:Widget id="search">
-			</tpl:Widget>
-            {{tpl:Widgets type="nav" disable="search"}}
-		</div> <!-- # End #blognav -->
-
-		<tpl:IfWidgets type="extra">
-			<div class="widgets blogextra__widgets" id="blogextra">
-		        <h2 class="blogextra__title">{{tpl:lang Extra menu}}</h2>
-				{{tpl:Widgets type="extra"}}
-			</div> <!-- # End #blogextra -->
-		</tpl:IfWidgets>
-	</aside> <!-- # End #sidebar -->
+<tpl:Block name="wrapper-sidebar-blognav-content">
+  <tpl:Widget id="search">
+  </tpl:Widget>
+  {{tpl:Widgets type="nav" disable="search"}}
 </tpl:Block>

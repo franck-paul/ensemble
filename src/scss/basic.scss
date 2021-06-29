@@ -140,3 +140,24 @@ img.full-width {
 #prelude {
   @include visually-hidden;
 }
+
+// Fun WIP
+
+h2.post-title {
+  background: var(--text-body);
+  color: var(--bg-body);
+  writing-mode: tb;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  float: left;
+  margin-left: -2.5em;
+  transform: rotate(180deg);
+
+  position: sticky;
+  top: 0;
+
+  a {
+    background: var(--text-body);
+    color: var(--bg-body);
+  }
+}

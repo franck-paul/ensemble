@@ -1,0 +1,10 @@
+{{tpl:extends parent="__parent__"}}
+<tpl:Block name="_entry-short-header">
+<h2 class="post-title"><a href="{{tpl:EntryURL}}">{{tpl:EntryTitle encode_html="1"}}</a></h2>
+<header>
+  <!-- # New day date -->
+  <tpl:DateHeader>
+  <p class="post-day-date"><time datetime="{{tpl:EntryDate iso8601="1"}}">{{tpl:EntryDate}}</time></p>
+  </tpl:DateHeader>
+</header>
+</tpl:Block>
