@@ -85,10 +85,21 @@ a {
   }
 }
 
-#wrapper {
-  padding: clamp(1rem, 10vw, 5rem);
-  max-width: 60em;
+#page {
+  display: grid;
+  grid-template-columns: clamp(3em, 5%, 6em) min(65ch, calc(100% - 10em)) 1fr;
+  grid-column-gap: 2em;
+
+  & > * {
+    grid-column: 2;
+  }
+
+  .full-bleed, .header, .footer {
+    width: 100%;
+    grid-column: 1 / -1;
+  }
 }
+
 
 footer {
   padding: 1em;
@@ -152,7 +163,6 @@ h2.post-title {
   float: left;
   margin-left: -2.5em;
   transform: rotate(180deg);
-
   position: sticky;
   top: 0;
 
