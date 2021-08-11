@@ -17,7 +17,7 @@
 .dark {
   --bg-body: #12262f;
   --text-body: #fff;
-    --bg-soft-body: #2a353b;
+  --bg-soft-body: #2a353b;
 }
 
 body {
@@ -94,7 +94,9 @@ a {
     grid-column: 2;
   }
 
-  .full-bleed, .header, .footer {
+  .full-bleed,
+  .header,
+  .footer {
     width: 100%;
     grid-column: 1 / -1;
   }

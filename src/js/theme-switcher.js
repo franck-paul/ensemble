@@ -17,7 +17,7 @@
 </div>
 */
 
-dotclear_ensemble.darkmode = function () {
+dotclear_ensemble.darkmode = () => {
   /*!
    * Get the first matching element in the DOM
    * (c) 2019 Chris Ferdinandi, MIT License, https://gomakethings.com
@@ -25,9 +25,7 @@ dotclear_ensemble.darkmode = function () {
    * @param  {Node}   parent   The parent to search in [optional]
    * @return {Node}            The element
    */
-  let pick_elt = function (selector, parent) {
-    return (parent ? parent : document).querySelector(selector);
-  };
+  let pick_elt = (selector, parent) => (parent ? parent : document).querySelector(selector);
 
   /*!
    * Get an array of all matching elements in the DOM
@@ -36,32 +34,31 @@ dotclear_ensemble.darkmode = function () {
    * @param  {Node}   parent   The parent to search in [optional]
    * @return {Array}           Th elements
    */
-  let pick_elts = function (selector, parent) {
-    return Array.prototype.slice.call((parent ? parent : document).querySelectorAll(selector));
-  };
+  let pick_elts = (selector, parent) => Array.prototype.slice.call((parent ? parent : document).querySelectorAll(selector));
 
   // Grab state from localStorage
   const storedMode = window.localStorage.getItem('darkmode');
 
   // setState based on stored mode or set to auto
+  const setState = (state) => {
+    document.body.classList.remove('light', 'dark');
+    if (state !== 'auto')
+      document.body.classList.add(state);
+    window.localStorage.setItem('darkmode', state);
+  };
+
   if (storedMode) {
     pick_elt(`#theme-toggle input[value='${storedMode}']`).checked = true;
     setState(storedMode);
-  } else setState('auto');
-
-  function setState(state) {
-    document.body.classList.remove('light', 'dark');
-    if (state !== 'auto') document.body.classList.add(state);
-    window.localStorage.setItem('darkmode', state);
-  }
+  } else
+    setState('auto');
 
   pick_elts('#theme-toggle input').forEach((t) => {
     t.addEventListener('click', () => {
-      if (t.checked) setState(t.getAttribute('value'));
+      if (t.checked)
+        setState(t.getAttribute('value'));
     });
   });
 };
 
-document.addEventListener('DOMContentLoaded', function () {
-  dotclear_ensemble.darkmode();
-});
+document.addEventListener('DOMContentLoaded', () => dotclear_ensemble.darkmode());

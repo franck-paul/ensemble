@@ -1,17 +1,18 @@
 'use strict';
+let dotclear_ensemble;
 
-let dotclear_ensemble = {
-  breakpoint: null,   // Height of current header, in pixels
+dotclear_ensemble = {
+  breakpoint: null, // Height of current header, in pixels
   timerId: null,
 
-  debounceFunction: function (func, delay) {
+  debounceFunction: (func, delay) => {
     if (dotclear_ensemble.timerId) {
       clearTimeout(dotclear_ensemble.timerId);
     }
     dotclear_ensemble.timerId = setTimeout(func, delay);
   },
 
-  doShrinkHeader: function () {
+  doShrinkHeader: () => {
     // Find blog header
     let header = document.querySelector('.header');
     if (dotclear_ensemble.breakpoint > 0) {
@@ -31,7 +32,10 @@ let dotclear_ensemble = {
 };
 
 // Get current height of header
-document.addEventListener('DOMContentLoaded', () => dotclear_ensemble.breakpoint = document.querySelector('.header').offsetHeight);
+document.addEventListener(
+  'DOMContentLoaded',
+  () => (dotclear_ensemble.breakpoint = document.querySelector('.header').offsetHeight)
+);
 
 // Watch page scrolling and (un)shrink header if necessary
 window.addEventListener('scroll', () => dotclear_ensemble.debounceFunction(dotclear_ensemble.doShrinkHeader, 200));

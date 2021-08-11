@@ -12,6 +12,7 @@
   width: 1px;
   white-space: nowrap;
 }
+
 @mixin visually-hidden-focus {
   clip: auto;
   clip-path: none;
@@ -31,6 +32,7 @@
     @include visually-hidden-focus;
   }
 }
+
 .sr-only {
   @include visually-hidden;
 }
