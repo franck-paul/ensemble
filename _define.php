@@ -14,11 +14,15 @@ if (!defined('DC_RC_PATH')) {
 
 $this->registerModule(
     'Ensemble',					// Name
-    'Collective built theme',	// Description
-    'Magic team',				// Authors
+    'Experimental theme',	    // Description
+    'Franck Paul',				// Authors
     '1.0',						// Version
     [							// Properties
         'type'   => 'theme',
-        'tplset' => 'dotty'
+        'tplset' => 'dotty',
+
+        'details'    => 'https://open-time.net/?q=ensemble',       // Details URL
+        'support'    => 'https://github.com/franck-paul/ensemble', // Support URL
+        'repository' => 'https://raw.githubusercontent.com/franck-paul/ensemble/main/dcstore.xml'
     ]
 );
