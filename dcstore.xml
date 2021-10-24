@@ -2,8 +2,8 @@
   <module id="ensemble">
     <name>Ensemble</name>
     <version>1.0</version>
-    <author>Magic team</author>
-    <desc>Collective built theme</desc>
+    <author>Franck Paul</author>
+    <desc>Experimental theme</desc>
     <file>https://github.com/franck-paul/ensemble/releases/download/1.0/theme-ensemble-1.0.zip</file>
     <da:dcmin>2.0</da:dcmin>
     <da:details>https://open-time.net/?q=ensemble</da:details>
