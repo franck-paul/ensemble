@@ -23,6 +23,6 @@ $this->registerModule(
 
         'details'    => 'https://open-time.net/?q=ensemble',       // Details URL
         'support'    => 'https://github.com/franck-paul/ensemble', // Support URL
-        'repository' => 'https://raw.githubusercontent.com/franck-paul/ensemble/main/dcstore.xml'
+        'repository' => 'https://raw.githubusercontent.com/franck-paul/ensemble/master/dcstore.xml'
     ]
 );
