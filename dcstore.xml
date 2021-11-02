@@ -1,8 +1,8 @@
 <modules xmlns:da="http://dotaddict.org/da/">
   <module id="ensemble">
-    <name>Ensemble</name>
+    <name>Experimental theme</name>
     <version>1.0</version>
-    <author>Franck Paul</author>
+    <author>Experimental theme</author>
     <desc>Experimental theme</desc>
     <file>https://github.com/franck-paul/ensemble/releases/download/1.0/theme-ensemble-1.0.zip</file>
     <da:dcmin>2.0</da:dcmin>
