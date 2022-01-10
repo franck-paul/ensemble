@@ -102,7 +102,6 @@ a {
   }
 }
 
-
 footer {
   padding: 1em;
   background: var(--bg-soft-body);
@@ -160,8 +159,8 @@ h2.post-title {
   background: var(--text-body);
   color: var(--bg-body);
   writing-mode: tb;
-  padding-top: .5em;
-  padding-bottom: .5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   float: left;
   margin-left: -2.5em;
   transform: rotate(180deg);
