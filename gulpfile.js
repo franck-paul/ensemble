@@ -3,12 +3,13 @@
 const gulp = require('gulp');
 const { series, parallel, watch } = require('gulp');
 
-const plg_sass = require('gulp-sass');
+const plg_sass = require('gulp-sass')(require('sass')); //sass-css
+//const plg_sass = require('gulp-sass');
 const plg_cleanCSS = require('gulp-clean-css');
 const plg_sourcemaps = require('gulp-sourcemaps');
 const plg_uglify = require('gulp-uglify');
 const plg_concat = require('gulp-concat');
-const plg_removeUseStrict = require("gulp-remove-use-strict");
+const plg_removeUseStrict = require('gulp-remove-use-strict');
 
 plg_sass.compiler = require('dart-sass');
 
@@ -23,7 +24,7 @@ const pjson = require('./package.json');
 const assets = {
   css: 'src/css/*.css',
   sass: 'src/scss/main.scss', // Should only include main Sass file
-  js: ['src/js/main.js', 'src/js/*.js'],  // Include main.js first
+  js: ['src/js/main.js', 'src/js/*.js'], // Include main.js first
   font: ['src/css/fonts/**.*', 'src/scss/fonts/**.*'],
 };
 

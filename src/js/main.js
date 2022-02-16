@@ -15,7 +15,7 @@ dotclear_ensemble = {
 
   doShrinkHeader: () => {
     // Find blog header
-    let header = document.querySelector('.header');
+    const header = document.querySelector('.header');
     if (dotclear_ensemble.breakpoint > 0) {
       if (!dotclear_ensemble.shrinked && (window.pageYOffset >= dotclear_ensemble.breakpoint)) {
         // Page scrolled, shrink header

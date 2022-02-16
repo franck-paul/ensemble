@@ -25,7 +25,7 @@ dotclear_ensemble.darkmode = () => {
    * @param  {Node}   parent   The parent to search in [optional]
    * @return {Node}            The element
    */
-  let pick_elt = (selector, parent) => (parent ? parent : document).querySelector(selector);
+  const pick_elt = (selector, parent) => (parent ? parent : document).querySelector(selector);
 
   /*!
    * Get an array of all matching elements in the DOM
@@ -34,7 +34,7 @@ dotclear_ensemble.darkmode = () => {
    * @param  {Node}   parent   The parent to search in [optional]
    * @return {Array}           Th elements
    */
-  let pick_elts = (selector, parent) => Array.prototype.slice.call((parent ? parent : document).querySelectorAll(selector));
+  const pick_elts = (selector, parent) => Array.prototype.slice.call((parent ? parent : document).querySelectorAll(selector));
 
   // Grab state from localStorage
   const storedMode = window.localStorage.getItem('darkmode');
