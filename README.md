@@ -8,19 +8,19 @@ Using Dotclear 2 theme/plugin installation procedures (via DotAddict or manual i
 
 For development (in order to build assets):
 
-```
+```bash
 npm i
 ```
 
 ## Build
 
-```
+```bash
 npm run build
 ```
 
 ## Make Dotclear package
 
-```
+```bash
 npm run pack
 ```
 

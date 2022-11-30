@@ -1,7 +1,5 @@
 'use strict';
-let dotclear_ensemble;
-
-dotclear_ensemble = {
+const dotclear_ensemble = {
   breakpoint: null, // Height of current header, in pixels
   shrinked: false,
   timerId: null,
@@ -33,6 +31,7 @@ dotclear_ensemble = {
     }
   },
 };
+
 
 // Get current height of header
 document.addEventListener(

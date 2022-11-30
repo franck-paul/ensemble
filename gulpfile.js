@@ -4,7 +4,6 @@ const gulp = require('gulp');
 const { series, parallel, watch } = require('gulp');
 
 const plg_sass = require('gulp-sass')(require('sass')); //sass-css
-//const plg_sass = require('gulp-sass');
 const plg_cleanCSS = require('gulp-clean-css');
 const plg_sourcemaps = require('gulp-sourcemaps');
 const plg_uglify = require('gulp-uglify');
@@ -78,13 +77,13 @@ exports.do_js = series(js);
 
 // Fonts
 function fonts() {
-  return gulp.src(assets.font).pipe(gulp.dest(paths.dist + '/fonts'));
+  return gulp.src(assets.font).pipe(gulp.dest(`${paths.dist}/fonts`));
 }
 exports.do_fonts = series(fonts);
 
 // Cleanup
 function clean() {
-  return del('./' + paths.dist);
+  return del(`./${paths.dist}`);
 }
 exports.clean = series(clean);
 
@@ -113,26 +112,24 @@ exports.default = series(clean, parallel(css, sass, js, fonts), parallel(watch_s
 function prepare_pack() {
   return gulp
     .src(elements, { base: '.' })
-    .pipe(gulp.dest(pjson.module + '-' + pjson.name + '-' + pjson.version + '/' + pjson.name));
+    .pipe(gulp.dest(`${pjson.module}-${pjson.name}-${pjson.version}/${pjson.name}`));
 }
 exports.prepare_pack = series(prepare_pack);
 
 function zip_pack() {
   return gulp
-    .src(pjson.module + '-' + pjson.name + '-' + pjson.version + '/**/*')
-    .pipe(zip(pjson.module + '-' + pjson.name + '-' + pjson.version + '.zip'))
+    .src(`${pjson.module}-${pjson.name}-${pjson.version}/**/*`)
+    .pipe(zip(`${pjson.module}-${pjson.name}-${pjson.version}.zip`))
     .pipe(gulp.dest(paths.pack));
 }
 exports.zip_pack = series(zip_pack);
 
 function clean_pack() {
-  return del('./' + pjson.module + '-' + pjson.name + '-' + pjson.version);
+  return del(`./${pjson.module}-${pjson.name}-${pjson.version}`);
 }
 exports.clean_pack = series(clean_pack);
 
 exports.pack = series(prepare_pack, zip_pack, clean_pack);
 
 // Reset: keep only non generated files
-exports.reset = function () {
-  return del(['./' + paths.dist, './' + paths.pack]);
-};
+exports.reset = () => del([`./${paths.dist}`, `./${paths.pack}`]);
