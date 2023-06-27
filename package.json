@@ -16,7 +16,7 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "gulp-zip": "^5.1.0",
-    "sass": "^1.56.1"
+    "sass": "^1.62.1"
   },
   "scripts": {
     "clean": "gulp clean",

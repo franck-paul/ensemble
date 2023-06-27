@@ -1,5 +1,12 @@
 # ensemble
 
+[![Release](https://img.shields.io/github/v/release/franck-paul/ensemble)](https://github.com/franck-paul/ensemble/releases)
+[![Date](https://img.shields.io/github/release-date/franck-paul/ensemble)](https://github.com/franck-paul/ensemble/releases)
+[![Issues](https://img.shields.io/github/issues/franck-paul/ensemble)](https://github.com/franck-paul/ensemble/issues)
+[![Dotclear](https://img.shields.io/badge/dotclear-v2.25-dev-blue.svg)](https://fr.dotclear.org/download)
+[![Dotaddict](https://img.shields.io/badge/dotaddict-official-green.svg)](https://themes.dotaddict.org/dc2/details/ensemble)
+[![License](https://img.shields.io/github/license/franck-paul/ensemble)](https://github.com/franck-paul/ensemble/blob/master/LICENSE)
+
 Dotclear 2 theme
 
 ## Installation
