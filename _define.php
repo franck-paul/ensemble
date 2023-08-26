@@ -12,7 +12,7 @@ $this->registerModule(
     'Ensemble',
     'Experimental theme',
     'Franck Paul',
-    '2.0',
+    '3.0',
     [
         'requires' => [['core', '2.27'], ['php', '8.1']],
         'type'     => 'theme',
