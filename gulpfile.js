@@ -1,23 +1,23 @@
 'use strict';
 
-const gulp = require('gulp');
-const { series, parallel, watch } = require('gulp');
+import { src, dest } from 'gulp';
+import { series, parallel, watch } from 'gulp';
 
 const plg_sass = require('gulp-sass')(require('sass')); //sass-css
-const plg_cleanCSS = require('gulp-clean-css');
-const plg_sourcemaps = require('gulp-sourcemaps');
-const plg_uglify = require('gulp-uglify');
-const plg_concat = require('gulp-concat');
-const plg_removeUseStrict = require('gulp-remove-use-strict');
+import plg_cleanCSS from 'gulp-clean-css';
+import { init, write } from 'gulp-sourcemaps';
+import plg_uglify from 'gulp-uglify';
+import plg_concat from 'gulp-concat';
+import plg_removeUseStrict from 'gulp-remove-use-strict';
 
 plg_sass.compiler = require('dart-sass');
 
 const mode = require('gulp-mode')();
 
-const del = require('del');
-const zip = require('gulp-zip');
+import del from 'del';
+import zip from 'gulp-zip';
 
-const pjson = require('./package.json');
+import { module, name, version } from './package.json';
 
 // Assets (used for build)
 const assets = {
@@ -41,54 +41,51 @@ const elements = ['*.php', '*.jpg', 'LICENSE', 'README.md', 'tpl/*', 'dist/*', '
 
 // Sass
 function sass() {
-  return gulp
-    .src(assets.sass)
-    .pipe(mode.development(plg_sourcemaps.init()))
+  return src(assets.sass)
+    .pipe(mode.development(init()))
     .pipe(plg_sass()) // Converts Sass to CSS with gulp-sass
     .pipe(mode.production(plg_cleanCSS()))
-    .pipe(mode.development(plg_sourcemaps.write('.')))
-    .pipe(gulp.dest(paths.dist));
+    .pipe(mode.development(write('.')))
+    .pipe(dest(paths.dist));
 }
-exports.do_sass = series(sass);
+export const do_sass = series(sass);
 
 // CSS
 function css() {
-  return gulp
-    .src(assets.css)
-    .pipe(mode.development(plg_sourcemaps.init()))
+  return src(assets.css)
+    .pipe(mode.development(init()))
     .pipe(mode.production(plg_cleanCSS()))
-    .pipe(mode.development(plg_sourcemaps.write('.')))
-    .pipe(gulp.dest(paths.dist));
+    .pipe(mode.development(write('.')))
+    .pipe(dest(paths.dist));
 }
-exports.do_css = series(css);
+export const do_css = series(css);
 
 // Js
 function js() {
-  return gulp
-    .src(assets.js)
-    .pipe(mode.development(plg_sourcemaps.init()))
+  return src(assets.js)
+    .pipe(mode.development(init()))
     .pipe(plg_concat('main.js'))
     .pipe(plg_removeUseStrict())
     .pipe(mode.production(plg_uglify())) // Minify JS files
-    .pipe(mode.development(plg_sourcemaps.write('.')))
-    .pipe(gulp.dest(paths.dist));
+    .pipe(mode.development(write('.')))
+    .pipe(dest(paths.dist));
 }
-exports.do_js = series(js);
+export const do_js = series(js);
 
 // Fonts
 function fonts() {
-  return gulp.src(assets.font).pipe(gulp.dest(`${paths.dist}/fonts`));
+  return src(assets.font).pipe(dest(`${paths.dist}/fonts`));
 }
-exports.do_fonts = series(fonts);
+export const do_fonts = series(fonts);
 
 // Cleanup
 function clean() {
   return del(`./${paths.dist}`);
 }
-exports.clean = series(clean);
+const _clean = series(clean);
+export { _clean as clean };
 
-// Build
-exports.build = series(clean, parallel(css, sass, js, fonts));
+export const build = series(clean, parallel(css, sass, js, fonts));
 
 // Watch
 function watch_sass() {
@@ -103,33 +100,37 @@ function watch_js() {
 function watch_font() {
   return watch(watches.font, fonts);
 }
-exports.watch = parallel(watch_sass, watch_css, watch_js, watch_font);
+const _watch = parallel(watch_sass, watch_css, watch_js, watch_font);
+export { _watch as watch };
 
 // Default = Build + watch
-exports.default = series(clean, parallel(css, sass, js, fonts), parallel(watch_sass, watch_css, watch_js, watch_font));
+const _default = series(clean, parallel(css, sass, js, fonts), parallel(watch_sass, watch_css, watch_js, watch_font));
+export { _default as default };
 
 // Package build
 function prepare_pack() {
-  return gulp
-    .src(elements, { base: '.' })
-    .pipe(gulp.dest(`${pjson.module}-${pjson.name}-${pjson.version}/${pjson.name}`));
+  return src(elements, { base: '.' }).pipe(dest(`${module}-${name}-${version}/${name}`));
 }
-exports.prepare_pack = series(prepare_pack);
+const _prepare_pack = series(prepare_pack);
+export { _prepare_pack as prepare_pack };
 
 function zip_pack() {
-  return gulp
-    .src(`${pjson.module}-${pjson.name}-${pjson.version}/**/*`)
-    .pipe(zip(`${pjson.module}-${pjson.name}-${pjson.version}.zip`))
-    .pipe(gulp.dest(paths.pack));
+  return src(`${module}-${name}-${version}/**/*`)
+    .pipe(zip(`${module}-${name}-${version}.zip`))
+    .pipe(dest(paths.pack));
 }
-exports.zip_pack = series(zip_pack);
+const _zip_pack = series(zip_pack);
+export { _zip_pack as zip_pack };
 
 function clean_pack() {
-  return del(`./${pjson.module}-${pjson.name}-${pjson.version}`);
+  return del(`./${module}-${name}-${version}`);
 }
-exports.clean_pack = series(clean_pack);
+const _clean_pack = series(clean_pack);
+export { _clean_pack as clean_pack };
 
-exports.pack = series(prepare_pack, zip_pack, clean_pack);
+export const pack = series(prepare_pack, zip_pack, clean_pack);
 
 // Reset: keep only non generated files
-exports.reset = () => del([`./${paths.dist}`, `./${paths.pack}`]);
+export function reset() {
+  return del([`./${paths.dist}`, `./${paths.pack}`]);
+}

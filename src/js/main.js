@@ -15,12 +15,12 @@ const dotclear_ensemble = {
     // Find blog header
     const header = document.querySelector('.header');
     if (dotclear_ensemble.breakpoint > 0) {
-      if (!dotclear_ensemble.shrinked && (window.pageYOffset >= dotclear_ensemble.breakpoint)) {
+      if (!dotclear_ensemble.shrinked && window.scrollY >= dotclear_ensemble.breakpoint) {
         // Page scrolled, shrink header
         header.classList.add('shrink');
         dotclear_ensemble.breakpoint = header.offsetHeight;
         dotclear_ensemble.shrinked = true;
-      } else if (dotclear_ensemble.shrinked && (window.pageYOffset === 0)) {
+      } else if (dotclear_ensemble.shrinked && window.scrollY === 0) {
         // Page come back to top, unshrink header
         header.classList.remove('shrink');
         dotclear_ensemble.breakpoint = header.offsetHeight;
@@ -32,11 +32,10 @@ const dotclear_ensemble = {
   },
 };
 
-
 // Get current height of header
 document.addEventListener(
   'DOMContentLoaded',
-  () => (dotclear_ensemble.breakpoint = document.querySelector('.header').offsetHeight)
+  () => (dotclear_ensemble.breakpoint = document.querySelector('.header').offsetHeight),
 );
 
 // Watch page scrolling and (un)shrink header if necessary
