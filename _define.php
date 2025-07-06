@@ -23,5 +23,6 @@ $this->registerModule(
         'details'    => 'https://open-time.net/?q=ensemble',
         'support'    => 'https://github.com/franck-paul/ensemble',
         'repository' => 'https://raw.githubusercontent.com/franck-paul/ensemble/main/dcstore.xml',
+        'license'    => 'gpl2',
     ]
 );
