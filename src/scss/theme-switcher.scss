@@ -5,9 +5,9 @@
 }
 
 .light #theme-toggle .thumb {
-  left: 0;
+  inset-inline-start: 0;
 }
 
 .dark #theme-toggle .thumb {
-  left: 2rem;
+  inset-inline-start: 2rem;
 }

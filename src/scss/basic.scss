@@ -23,7 +23,7 @@
 body {
   background: var(--bg-body);
   color: var(--text-body);
-  overflow-x: hidden;
+  overflow-inline: hidden;
   font-family: monospace;
   font-size: 1.25em;
   line-height: 1.5;
@@ -46,12 +46,12 @@ a {
   z-index: 1; // Mandatory to avoid relative positionned blockd to scroll over stick header
   top: 0;
   background: var(--bg-body);
-  border-bottom: 1px solid var(--text-body);
+  border-block-end: 1px solid var(--text-body);
   padding: 1em;
 
   // animation magic
   transition: all 0.4s ease-in-out;
-  overflow-x: hidden;
+  overflow-inline: hidden;
 }
 
 .header.shrink {
@@ -68,8 +68,8 @@ a {
 
   h1 {
     font-size: 1.5em;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
   }
 
   a {
@@ -97,7 +97,7 @@ a {
   .full-bleed,
   .header,
   .footer {
-    width: 100%;
+    inline-size: 100%;
     grid-column: 1 / -1;
   }
 }
@@ -113,16 +113,16 @@ footer {
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+  max-inline-size: 100%;
+  block-size: auto;
   box-shadow: 0 0 3px 1px var(--text-body);
   border-radius: 1em;
 
   &.post-icon {
     box-shadow: 0 0 1px 0 var(--text-body);
     border-radius: unset;
-    float: left;
-    margin-right: 1em;
+    float: inline-start;
+    margin-inline-end: 1em;
   }
 }
 
@@ -132,13 +132,13 @@ pre {
 
 // Full-width image
 img.full-width {
-  width: 100vw;
-  max-width: 100vw;
+  inline-size: 100vw;
+  max-inline-size: 100vw;
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  inset-inline-start: 50%;
+  inset-inline-end: 50%;
+  margin-inline-start: -50vw;
+  margin-inline-end: -50vw;
   box-shadow: none;
   border: 1px solid var(--text-body);
 }
@@ -159,13 +159,13 @@ h2.post-title {
   background: var(--text-body);
   color: var(--bg-body);
   writing-mode: tb;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  float: left;
-  margin-left: -2.5em;
+  padding-block-start: 0.5em;
+  padding-block-end: 0.5em;
+  float: inline-start;
+  margin-inline-start: -2.5em;
   transform: rotate(180deg);
   position: sticky;
-  top: 0;
+  inset-block-start: 0;
 
   a {
     background: var(--text-body);

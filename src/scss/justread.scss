@@ -5,7 +5,7 @@
   }
 
   body {
-    height: 100vh;
+    block-size: 100vh;
     overflow: auto;
   }
 }
@@ -17,25 +17,25 @@
 .simple-article-container {
   display: inline-block;
   vertical-align: top;
-  padding-top: 70px;
+  padding-block-start: 70px;
 }
 
 .rtl .simple-article-container {
-  text-align: right;
+  text-align: end;
 }
 
 .simple-container {
   margin: 0 auto;
-  padding-bottom: 20px;
+  padding-block-end: 20px;
   text-align: center;
 }
 
 .simple-container > div {
-  text-align: left;
+  text-align: start;
 }
 
 .article-container {
-  max-width: 600px;
+  max-inline-size: 600px;
 }
 
 .simple-meta > * {
@@ -60,15 +60,15 @@
 .simple-ui-container {
   z-index: 5;
   position: fixed;
-  top: 10px;
-  right: 8px;
+  inset-block-start: 10px;
+  inset-inline-end: 8px;
   display: flex;
   flex-direction: row-reverse;
 }
 
 .rtl .simple-ui-container {
-  right: auto;
-  left: 8px;
+  inset-inline-end: auto;
+  inset-inline-start: 8px;
 }
 
 .simple-control {
@@ -88,16 +88,18 @@
 
 .simple-close {
   font-size: 25px;
-  height: 37px;
+  block-size: 37px;
   background: none;
   border: 1px solid black;
-  padding: 0 10px 5px;
-  margin-left: 8px;
+  padding-block-start: 0;
+  padding-block-end: 5px;
+  padding-inline: 10px;
+  margin-inline-start: 8px;
 }
 
 .rtl .simple-close {
-  margin-left: auto;
-  margin-right: 8px;
+  margin-inline-start: auto;
+  margin-inline-end: 8px;
 }
 
 .simple-print,
@@ -105,8 +107,8 @@
 .simple-delete,
 .simple-share,
 .simple-undo {
-  width: 40px;
-  height: 40px;
+  inline-size: 40px;
+  block-size: 40px;
   border: 0;
   background: none;
   font-size: 0;
@@ -115,12 +117,12 @@
 .simple-print svg,
 .simple-edit-theme svg,
 .simple-delete svg {
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
 }
 
 .simple-share {
-  margin-top: 5px;
+  margin-block-start: 5px;
 }
 
 .simple-undo {
@@ -133,7 +135,7 @@
 }
 
 .simple-delete {
-  width: 43px;
+  inline-size: 43px;
 }
 
 .simple-edit-theme {
@@ -141,12 +143,12 @@
 }
 
 .simple-edit {
-  width: 30px;
-  height: 20px;
+  inline-size: 30px;
+  block-size: 20px;
   position: absolute;
-  top: 10px;
-  right: 100%;
-  padding-right: 10px;
+  inset-block-start: 10px;
+  inset-inline-end: 100%;
+  padding-inline-end: 10px;
   cursor: pointer;
   display: none;
   opacity: 0.5;
@@ -158,24 +160,24 @@
 }
 
 .rtl .simple-edit {
-  right: auto;
-  padding-right: 0;
-  left: 100%;
-  padding-left: 10px;
+  inset-inline-end: auto;
+  padding-inline-end: 0;
+  inset-inline-start: 100%;
+  padding-inline-start: 10px;
 }
 
 .simple-author .simple-edit {
-  right: auto;
-  padding-right: 0;
-  left: 100%;
-  padding-left: 10px;
+  inset-inline-end: auto;
+  padding-inline-end: 0;
+  inset-inline-start: 100%;
+  padding-inline-start: 10px;
 }
 
 .rtl .simple-author .simple-edit {
-  left: auto;
-  right: 100%;
-  padding-right: 10px;
-  padding-left: 0;
+  inset-inline-start: auto;
+  inset-inline-end: 100%;
+  padding-inline-end: 10px;
+  padding-inline-start: 0;
 }
 
 .simple-title div {
@@ -190,16 +192,16 @@
 
 .simple-ext-info {
   text-align: center;
-  border-top: 1px solid black;
-  padding-top: 28px;
+  border-block-start: 1px solid black;
+  padding-block-start: 28px;
 }
 
 .simple-viewed-using {
-  margin-bottom: 0;
+  margin-block-end: 0;
 }
 
 .simple-bug-reporter {
-  margin-top: 0;
+  margin-block-start: 0;
   font-size: 12px;
 }
 
@@ -216,7 +218,7 @@
 /* LaTeX plain text show on hover */
 .simple-plain-text {
   display: none;
-  margin-top: -5px;
+  margin-block-start: -5px;
 }
 
 .simple-plain-text:hover,
@@ -226,16 +228,16 @@
 
 @media (max-width: 750px) {
   .simple-container {
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-inline-start: 50px;
+    padding-inline-end: 50px;
   }
 }
 
 @media (max-width: 450px) {
   .simple-container {
-    padding-top: 30px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-block-start: 30px;
+    padding-inline-start: 20px;
+    padding-inline-end: 20px;
   }
 }
 
@@ -259,7 +261,7 @@
   }
 
   @page :first {
-    margin-top: 0;
+    margin-block-start: 0;
   }
 }
 
@@ -273,7 +275,7 @@
 
 /* For the GUI theme editor */
 .saturation-field {
-  margin-right: 1px !important;
+  margin-inline-end: 1px !important;
 }
 
 /* For the highlighter functionality */
@@ -384,10 +386,10 @@
 .jr-edit-bar::after {
   content: '';
   position: absolute;
-  left: 50%;
-  top: 100%;
+  inset-inline-start: 50%;
+  inset-block-start: 100%;
   z-index: -1;
-  margin-left: -10px;
+  margin-inline-start: -10px;
   border-style: solid;
   border-width: 10px 10px 0 10px;
   border-color: #c1c1c1 transparent transparent transparent;
@@ -405,7 +407,7 @@
   background-color: transparent;
   border: none;
   font-size: 20px;
-  width: 25px;
+  inline-size: 25px;
   cursor: pointer;
   outline: none;
   padding: 3px;
@@ -435,7 +437,7 @@
 
 .jr-edit-bar svg {
   vertical-align: bottom;
-  margin-bottom: 4px;
+  margin-block-end: 4px;
 }
 
 .simple-add-comment svg,
@@ -445,11 +447,11 @@
 
 .jr-edit-bar .text-color {
   padding: 0 6px;
-  border-bottom: 3px solid currentColor;
+  border-block-end: 3px solid currentColor;
 }
 
 .text-color svg {
-  margin-left: -3px;
+  margin-inline-start: -3px;
 }
 
 .jr-edit-bar .jr-highlight-color {
@@ -463,15 +465,17 @@
 .jr-strike svg,
 .jr-underline svg,
 .jr-highlight-color svg {
-  margin-bottom: 3px;
+  margin-block-end: 3px;
 }
 
 .jr-color-picker {
   position: absolute;
-  top: 100%;
-  width: 81px;
-  margin-top: -6px;
-  padding: 0 6px 4px;
+  inset-block-start: 100%;
+  inline-size: 81px;
+  margin-block-start: -6px;
+  padding-block-start: 0;
+  padding-block-end: 4px;
+  padding-inline: 6px;
   border: 1px solid black;
   display: none;
 }
@@ -484,22 +488,22 @@
 .jr-color-swatch {
   display: inline-block;
   vertical-align: middle;
-  width: 20px;
-  height: 20px;
+  inline-size: 20px;
+  block-size: 20px;
   cursor: pointer;
 }
 
 .jr-text-picker {
-  left: 94px;
+  inset-inline-start: 94px;
 }
 
 .jr-highlight-picker {
-  left: 123px;
+  inset-inline-start: 123px;
 }
 
 /* Comment styles */
 .simple-comments {
-  width: 0;
+  inline-size: 0;
   position: relative;
   display: inline-block;
   vertical-align: top;
@@ -507,11 +511,11 @@
 }
 
 .simple-with-comments .simple-comments {
-  width: 300px;
+  inline-size: 300px;
 }
 
 .simple-compact-comments {
-  width: 0;
+  inline-size: 0;
   position: relative;
   display: none;
 }
@@ -526,32 +530,32 @@
 
 .simple-comment-container {
   position: absolute;
-  top: 0;
-  left: 55px;
+  inset-block-start: 0;
+  inset-inline-start: 55px;
   z-index: 3;
 }
 
 .simple-compact-view .simple-comment-container {
   position: relative;
-  top: 0 !important;
+  inset-block-start: 0 !important;
   display: inline-block;
-  margin-bottom: 10px;
+  margin-block-end: 10px;
 }
 
 .simple-comment-link {
   text-decoration: none;
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
 }
 
 .simple-add-comment {
   display: none;
   position: absolute;
-  top: 100px;
-  left: 20px;
+  inset-block-start: 100px;
+  inset-inline-start: 20px;
   z-index: 1;
-  width: 40px;
-  height: 40px;
+  inline-size: 40px;
+  block-size: 40px;
   padding: 7px;
   border-radius: 20px;
   outline: none;
@@ -574,13 +578,13 @@
 }
 
 .rtl .simple-add-comment {
-  right: 10px;
+  inset-inline-end: 10px;
 }
 
 .simple-add-comment-container {
   display: inline-block;
   position: relative;
-  width: 0;
+  inline-size: 0;
 }
 
 .simple-add-comment:hover {
@@ -588,13 +592,13 @@
 }
 
 .rtl .simple-comment-container {
-  left: 7px;
-  text-align: right;
+  inset-inline-start: 7px;
+  text-align: end;
 }
 
 .simple-comment-styling {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-  width: 240px;
+  inline-size: 240px;
   padding: 5px;
   background-color: white;
   border: 1px solid lightgrey;
@@ -611,38 +615,38 @@
 .simple-comment-container::before {
   content: '';
   position: absolute;
-  border-top: none;
-  border-bottom: 18px solid transparent;
-  border-left: none;
-  border-right: 18px solid #fff;
-  left: -17px;
-  top: 0.3px;
+  border-block-start: none;
+  border-block-end: 18px solid transparent;
+  border-inline-start: none;
+  border-inline-end: 18px solid #fff;
+  inset-inline-start: -17px;
+  inset-block-start: 0.3px;
 }
 
 .simple-comment-container::after {
   content: '';
   position: absolute;
-  border-top: none;
-  border-bottom: 24px solid transparent;
-  border-left: none;
-  border-right: 24px solid rgba(0, 0, 0, 0.135);
-  left: -19px;
-  top: 0;
+  border-block-start: none;
+  border-block-end: 24px solid transparent;
+  border-inline-start: none;
+  border-inline-end: 24px solid rgba(0, 0, 0, 0.135);
+  inset-inline-start: -19px;
+  inset-block-start: 0;
   z-index: -1;
 }
 
 .rtl .simple-comment-container::before {
-  left: auto;
-  right: -17px;
-  border-left: 18px solid #fff;
-  border-right: none;
+  inset-inline-start: auto;
+  inset-inline-end: -17px;
+  border-inline-start: 18px solid #fff;
+  border-inline-end: none;
 }
 
 .rtl .simple-comment-container::after {
-  left: auto;
-  right: -19px;
-  border-left: 24px solid rgba(0, 0, 0, 0.135);
-  border-right: none;
+  inset-inline-start: auto;
+  inset-inline-end: -19px;
+  border-inline-start: 24px solid rgba(0, 0, 0, 0.135);
+  border-inline-end: none;
 }
 
 .jr-posted::before,
@@ -653,22 +657,22 @@
 .simple-comment-container textarea {
   resize: none;
   display: block;
-  width: 100%;
-  height: 44px;
+  inline-size: 100%;
+  block-size: 44px;
   font-family: sans-serif;
-  margin-bottom: 5px;
+  margin-block-end: 5px;
 }
 
 .simple-comment-container .jr-post {
   background-color: #27aae1;
   background-image: linear-gradient(to bottom, #27aae1, #269cce);
   color: white;
-  margin-right: 6px;
+  margin-inline-end: 6px;
 }
 
 .rtl .jr-post {
-  margin-right: auto;
-  margin-left: 6px;
+  margin-inline-end: auto;
+  margin-inline-start: 6px;
 }
 
 .simple-comment-container .jr-post[disabled] {
@@ -707,23 +711,23 @@
   padding: 3px;
   line-height: 0.8;
   position: absolute;
-  top: 5px;
-  right: 5px;
+  inset-block-start: 5px;
+  inset-inline-end: 5px;
   background: transparent;
 }
 
 .simple-comment-container .back-to-ref {
-  right: 27px;
+  inset-inline-end: 27px;
 }
 
 .rtl .delete-button {
-  right: auto;
-  left: 5px;
+  inset-inline-end: auto;
+  inset-inline-start: 5px;
 }
 
 .rtl .back-to-ref {
-  right: auto;
-  left: 27px;
+  inset-inline-end: auto;
+  inset-inline-start: 27px;
 }
 
 /* Text gradient functionality from https://codepen.io/Zeaklous/pen/GGXVwd */
@@ -746,14 +750,14 @@
   .gradient-text .colorOverlay,
   .gradient-text::after {
     content: '';
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
     position: absolute;
     display: block;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+    inset-block-end: 0;
+    inset-inline-start: 0;
     pointer-events: none;
     mix-blend-mode: screen;
     background-repeat: no-repeat;
@@ -768,10 +772,10 @@
 .simple-find {
   font-family: sans-serif;
   position: fixed;
-  top: 0;
-  left: 15px;
+  inset-block-start: 0;
+  inset-inline-start: 15px;
   z-index: 1;
-  width: 201px;
+  inline-size: 201px;
   background-color: white;
   border-radius: 2px;
   padding: 10px;
@@ -790,22 +794,22 @@
 .simple-find-input {
   border: 0;
   outline: none;
-  width: 157px;
+  inline-size: 157px;
 }
 
 .simple-find-count {
   color: lightgray;
   font-size: 0.9em;
   position: absolute;
-  right: 34px;
-  top: 5px;
-  text-align: right;
+  inset-inline-end: 34px;
+  inset-block-start: 5px;
+  text-align: end;
   visibility: hidden;
 }
 
 .rtl .simple-find-count {
-  right: auto;
-  left: 34px;
+  inset-inline-end: auto;
+  inset-inline-start: 34px;
 }
 
 .simple-find-count.active {
@@ -820,8 +824,8 @@
 /* Autoscroll functionality */
 .pause-scroll {
   position: fixed;
-  bottom: 15px;
-  right: 15px;
+  inset-block-end: 15px;
+  inset-inline-end: 15px;
   opacity: 0.5;
   transition: opacity 0.2s;
   background: none;
@@ -835,15 +839,15 @@
 }
 
 .rtl .pause-scroll {
-  left: 15px;
-  right: auto;
+  inset-inline-start: 15px;
+  inset-inline-end: auto;
 }
 
 .scroll-input {
   position: fixed;
-  right: 20px;
-  bottom: 35px;
-  width: 50px;
+  inset-inline-end: 20px;
+  inset-block-end: 35px;
+  inline-size: 50px;
   opacity: 0.3;
   transition: 0.2s;
 }
@@ -854,8 +858,8 @@
 }
 
 .rtl .scroll-input {
-  left: 20px;
-  right: auto;
+  inset-inline-start: 20px;
+  inset-inline-end: auto;
 }
 
 /* Custom scrollbar functionality */
@@ -865,10 +869,10 @@
 
 .simple-progress {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: calc(100% + 7px);
-  height: 5px;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: calc(100% + 7px);
+  block-size: 5px;
   border: none;
   background-color: transparent;
 
@@ -884,14 +888,14 @@
 .simple-progress::-webkit-progress-value {
   background-color: #5d5d5d;
   border-radius: 100px;
-  margin-left: -5px;
+  margin-inline-start: -5px;
 }
 
 .simple-progress::-moz-progress-bar {
   /* For some reason, putting them together breaks it in Chrome... */
   background-color: #5d5d5d;
   border-radius: 100px;
-  margin-left: -5px;
+  margin-inline-start: -5px;
 }
 
 /* Lightbox functionality */
@@ -899,18 +903,18 @@
   display: none;
   position: fixed;
   z-index: 999;
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
   text-align: center;
-  top: 0;
-  left: 0;
+  inset-block-start: 0;
+  inset-inline-start: 0;
   background: rgba(0, 0, 0, 0.8);
 }
 
 .jr-lightbox img {
-  max-width: 90%;
-  max-height: 80%;
-  margin-top: 2%;
+  max-inline-size: 90%;
+  max-block-size: 80%;
+  margin-block-start: 2%;
 }
 
 .jr-lightbox:target {
@@ -927,8 +931,8 @@
   font-size: 0.9rem;
   line-height: 1.2;
   position: absolute;
-  top: 100%;
-  left: 50%;
+  inset-block-start: 100%;
+  inset-inline-start: 50%;
   transform: translateX(-50%);
   background-color: white;
   border-radius: 2px;
@@ -941,17 +945,17 @@
 }
 
 .simple-share-alert {
-  width: 200px;
+  inline-size: 200px;
 }
 
 /* Notification functionality */
 .right-align-buttons {
-  text-align: right;
+  text-align: end;
 }
 
 .jr-tooltip {
   font-family: sans-serif;
-  width: 320px;
+  inline-size: 320px;
   padding: 20px;
   font-size: 0.8em;
   line-height: 1.4;
@@ -962,14 +966,14 @@
 
 .jr-notifier {
   position: fixed;
-  bottom: 15px;
-  right: 15px;
+  inset-block-end: 15px;
+  inset-inline-end: 15px;
   padding: 20px;
   border-radius: 5px;
 }
 
 .jr-notifier p {
-  margin-top: 0;
+  margin-block-start: 0;
 }
 
 .jr-primary,
@@ -988,7 +992,7 @@
   background-color: #27aae1;
   color: white;
   opacity: 1;
-  margin-left: 10px;
+  margin-inline-start: 10px;
   border-color: transparent;
 }
 
@@ -1010,12 +1014,12 @@
 #simple-article#simple-article {
   display: block;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  max-width: 100%;
-  min-width: 100%;
-  height: 100%;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  min-inline-size: 100%;
+  block-size: 100%;
   margin: 0;
   padding: 0;
   background: white;
@@ -1040,7 +1044,7 @@
 
 .dg {
   z-index: 99999999999 !important;
-  height: auto !important;
+  block-size: auto !important;
 }
 
 .simple-no-scroll .dg {
@@ -1052,10 +1056,10 @@
 }
 
 .dg.main .close-button.close-button {
-  bottom: -41px;
-  border-top: 1px solid grey;
+  inset-block-end: -41px;
+  border-block-start: 1px solid grey;
 }
 
 .dg.main .close-button.saveAndClose {
-  bottom: -20px;
+  inset-block-end: -20px;
 }
