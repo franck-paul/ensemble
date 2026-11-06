@@ -16,9 +16,9 @@ if (isset($this) && is_object($this) && method_exists($this, 'registerModule') &
         'Ensemble',
         'Experimental theme',
         'Franck Paul',
-        '4.1',
+        '4.2',
         [
-            'date'     => '2003-08-13T13:42:00+0100',
+            'date'     => '2026-11-06T10:06:25+0100',
             'requires' => [['core', '2.36']],
             'type'     => 'theme',
             'tplset'   => 'dotty',
